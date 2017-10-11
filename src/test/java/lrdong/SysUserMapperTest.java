@@ -1,6 +1,8 @@
 package lrdong;
 
+import com.alibaba.fastjson.JSON;
 import lrdong.module.Application;
+import lrdong.module.bean.SysUserCriteria;
 import lrdong.module.dao.SysUserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +21,17 @@ public class SysUserMapperTest {
     private SysUserMapper sysUserMapper;
 
     @Test
-    public void testSelece()
+    public void testSelectByPrimaryKey()
     {
-        System.out.println(sysUserMapper.selectByPrimaryKey(1l));
+        System.out.println(JSON.toJSON(sysUserMapper.selectByPrimaryKey(1l)));
+    }
+
+    @Test
+    public void testCountByExample()
+    {
+        SysUserCriteria sysUserCriteria = new SysUserCriteria();
+        sysUserCriteria.or().andIdEqualTo(1l).andUserEmailIsNotNull();
+        sysUserCriteria.setOrderByClause("crate_time ASC");
+        System.out.println("aaaaaaaaaaaaaaaaaaa:"+sysUserMapper.countByExample(sysUserCriteria));
     }
 }
