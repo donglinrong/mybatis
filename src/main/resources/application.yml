@@ -10,8 +10,13 @@ spring:
    url: jdbc:mysql://localhost:3306/mytest
    username: root
    password: william1121
-
+ profiles:
+   active: dev
 
 mybatis:
      type-aliases-package: lrdong.module.bean
      mapper-locations: classpath:lrdong/module/dao/*.xml
+
+logging:
+  config: classpath:logback-boot.xml
+

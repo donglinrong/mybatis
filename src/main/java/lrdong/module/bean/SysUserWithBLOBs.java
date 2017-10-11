@@ -143,4 +143,8 @@ public class SysUserWithBLOBs extends SysUser implements Serializable {
         sb.append("]");
         return sb.toString();
     }
+
+    public static void main(String[] args) {
+        SysUserWithBLOBs a =new SysUserWithBLOBs();
+    }
 }
