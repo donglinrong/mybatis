@@ -1,7 +1,6 @@
 package lrdong;
 
 import com.alibaba.fastjson.JSON;
-import lrdong.module.Application;
 import lrdong.module.bean.SysUserCriteria;
 import lrdong.module.dao.SysUserMapper;
 import org.junit.Test;

@@ -20,6 +20,11 @@
     <result column="user_info" jdbcType="LONGVARCHAR" property="userInfo" />
     <result column="head_img" jdbcType="LONGVARBINARY" property="headImg" />
   </resultMap>
+
+  <resultMap id="userRoleListMap" type="lrdong.module.bean.SysUserWithBLOBs" extends="ResultMapWithBLOBs">
+    <collection property="roleList" columnPrefix="role_" resultMap="lrdong.module.dao.SysRoleMapper.BaseResultMap"/>
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated
@@ -119,6 +124,26 @@
     from sys_user
     where id = #{id,jdbcType=BIGINT}
   </select>
+
+  <select id="selectAllUserAndRoles" resultMap="userRoleListMap">
+    SELECT
+      u.id,
+      u.user_email,
+      u.head_img,
+      u.user_info,
+      u.user_name,
+      u.create_time,
+      u.user_password,
+      r.id role_id,
+      r.role_name role_role_name,
+      r.enabled role_enabled,
+      r.create_time role_create_time,
+      r.create_by role_create_by
+    FROM sys_user u
+    INNER JOIN  sys_user_role ur ON u.id = ur.user_id
+    INNER JOIN sys_role r on ur.role_id = r.id
+  </select>
+
   <insert id="insert" parameterType="lrdong.module.bean.SysUserWithBLOBs">
     <!--
       WARNING - @mbggenerated

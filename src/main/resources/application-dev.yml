@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://172.16.10.117:3306/Urine
+    username: urine
+    password: urine1234

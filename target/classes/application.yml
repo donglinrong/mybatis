@@ -6,12 +6,8 @@ spring:
    encoding: UTF-8
    content-type: text/html
    mode: HTML5
- datasource:
-   url: jdbc:mysql://localhost:3306/mytest
-   username: root
-   password: william1121
  profiles:
-   active: dev
+   active: local
 
 mybatis:
      type-aliases-package: lrdong.module.bean
