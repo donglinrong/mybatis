@@ -1,5 +1,6 @@
 package lrdong.common.interceptor;
 
+import com.doctorwork.common.exception.ServiceException;
 import lrdong.common.exception.UnloginException;
 import lrdong.common.model.response.HttpResult;
 import org.slf4j.Logger;
@@ -33,6 +34,10 @@ public class ExceptionInterceptor {
         {
             e.printStackTrace();
             return error("请重新登陆");
+        }else if (e instanceof ServiceException)
+        {
+            e.printStackTrace();
+            return error("用户名密码不存在");
         }
         else if (e instanceof Exception) {
             logger.error("系统异常:",e);

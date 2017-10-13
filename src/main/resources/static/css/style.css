@@ -1,0 +1,21 @@
+body {
+    background:url(../images/homescreen.jpeg) #f8f6e9;
+}
+.mycenter{
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    width:500px;
+    padding: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.mycenter mysign{
+    width: 440px;
+}
+.mycenter input,checkbox,button{
+    margin-top:2%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

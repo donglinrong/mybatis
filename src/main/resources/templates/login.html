@@ -3,22 +3,48 @@
       xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </head>
-<body onload='document.f.username.focus();'>
-<form name="f" th:action="@{/mybatis/admininfo/login}" method="POST">
+<body onload='document.f.userName.focus();'>
+<form name="f" id="form">
+    <div class="mycenter">
     <table>
-        <tr>
-            <td>User:</td><td><input type="text" name="userName" value=""></td>
+        <tr class="col-lg-10">
+            <td>用户名:</td><td><input id="userName" type="text" class="form-control" name="userName" value=""></td>
+        </tr>
+        <tr class="col-lg-10">
+            <td>密码:</td><td><input id="userPassword" type="password"  class="form-control"  name="userPassword" value=""></td>
         </tr>
         <tr>
-            <td>Password:</td><td><input type="password" name="userPassword" value=""></td>
+            <td><input  id="submit"  class="btn btn-success col-lg-12" type="submit"></td>
         </tr>
-        <tr>
-            <td colspan="2"><input name="submit" type="submit" value="Login"></td>
-        </tr>
-
     </table>
+    </div>
 </form>
 </body>
+<script type="text/javascript">
+    $('#form').submit(function () {
+        var userName = $("#userName").val();
+        var userPassword = $("userPassword").val();
+        $.ajax({
+            url: $(this).attr('/mybatis/admininfo/login'),
+            type: 'POST',
+            data: {userName:userName,userPassword:userPassword},
+            contentType: 'application/json',
+            success: function (data) {
+                alert('data')
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('An error has occured!! :-(')
+            }
+        })
+
+        return false
+    })
+</script>
 </html>

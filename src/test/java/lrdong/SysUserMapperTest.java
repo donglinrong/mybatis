@@ -1,6 +1,8 @@
 package lrdong;
 
 import com.alibaba.fastjson.JSON;
+import com.doctorwork.common.util.Md5Util;
+import lrdong.module.bean.SysUser;
 import lrdong.module.bean.SysUserCriteria;
 import lrdong.module.dao.SysUserMapper;
 import org.junit.Test;
@@ -44,5 +46,15 @@ public class SysUserMapperTest {
         System.out.println(JSON.toJSON(sysUserMapper.selectAllUserAndRoles()));
     }
 
+    @Test
+    public void testUpdateByPrimanyKey()
+    {
+        SysUser sysUser = new SysUser();
+        sysUser.setUserName("lrdong");
+        sysUser.setId(1l);
+        sysUser.setUserPassword("william");
+        sysUser.setUserPassword(Md5Util.encoderByMd5(sysUser.getUserPassword()));
+        sysUserMapper.updateByPrimaryKey(sysUser);
+    }
 
 }
