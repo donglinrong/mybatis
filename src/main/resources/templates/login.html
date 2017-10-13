@@ -30,11 +30,16 @@
 <script type="text/javascript">
     $('#form').submit(function () {
         var userName = $("#userName").val();
-        var userPassword = $("userPassword").val();
+        var userPassword = $("#userPassword").val();
+        var obj = {
+            userName:userName,
+            userPassword:userPassword
+        }
+        var str = JSON.stringify(obj);
         $.ajax({
             url: $(this).attr('/mybatis/admininfo/login'),
             type: 'POST',
-            data: {userName:userName,userPassword:userPassword},
+            data:str,
             contentType: 'application/json',
             success: function (data) {
                 alert('data')
